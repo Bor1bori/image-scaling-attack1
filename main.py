@@ -5,9 +5,13 @@
 
 import load_images
 import attack
+import time
 
 if __name__ == '__main__':
-    source_img, target_img = load_images.load_color_image_from_disk('./images/cat1.jpg', './images/man1.jpg')
+    source_img, target_img = load_images.load_color_image_from_disk(
+        './images/down_cat.jpg',
+        './images/down_down_man.jpg')
+    start = time.time()
     attack.strong_attack(lambda x: x, source_img, target_img)
-
+    print("time :", time.time() - start)
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

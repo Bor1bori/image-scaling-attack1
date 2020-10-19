@@ -14,18 +14,21 @@ def strong_attack(scale_func, source_img, target_img):
     print(intermediate_source_img.shape)
     perturbation_v = np.zeros((height_s, width_t, 3))
     for channel in range(3):
+        print('channel ' + str(channel) + ' doing...')
         for column in range(width_t):
+            print('column ' + str(column) + ' doing...')
             perturbation_v[:, column, channel] = core.get_perturbation_vertical(
                 intermediate_source_img[:, column, channel],
                 target_img[:, column, channel],
                 coefficient_left,
                 'min')
-
+#            print(perturbation_v)
     intermediate_attack_img = (intermediate_source_img + perturbation_v).astype(np.dtype(np.uint32))
-
     perturbation_h = np.zeros((height_s, width_s, 3))
     for channel in range(3):
+        print('channel ' + str(channel) + ' doing...')
         for row in range(height_s):
+            print('row ' + str(row) + ' doing...')
             perturbation_h[row, :, channel] = core.get_perturbation_horizontal(
                 source_img[row, :, channel],
                 intermediate_attack_img[row, :, channel],
