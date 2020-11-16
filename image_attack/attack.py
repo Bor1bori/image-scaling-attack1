@@ -1,4 +1,4 @@
-import core
+from image_attack import core
 import numpy as np
 import cv2 as cv
 
@@ -36,6 +36,6 @@ def strong_attack(scale_func, source_img, target_img):
                 'min')
 
     attack_img = (source_img + perturbation_h).astype(np.dtype(np.float32))
-    cv.imwrite('./images/result.jpg', cv.cvtColor(attack_img, cv.COLOR_RGB2BGR))
+    cv.imwrite('../images/result.jpg', cv.cvtColor(attack_img, cv.COLOR_RGB2BGR))
     scaled_attack_img = cv.resize(attack_img, (target_img.shape[1], target_img.shape[0]))
-    cv.imwrite('./images/result_scaled.jpg', cv.cvtColor(scaled_attack_img, cv.COLOR_RGB2BGR))
+    cv.imwrite('../images/result_scaled.jpg', cv.cvtColor(scaled_attack_img, cv.COLOR_RGB2BGR))
